@@ -1,0 +1,160 @@
+Configuração de uma Instância Gerenciada de SQL no Microsoft Azure
+📖 Sobre o Projeto
+
+Este repositório contém o resumo das etapas realizadas para criação e configuração de uma Instância Gerenciada do Azure SQL, como parte do laboratório prático de Microsoft Azure.
+
+O objetivo foi compreender o processo de implantação de um banco de dados gerenciado na nuvem, explorando configurações de computação, armazenamento, rede, segurança e criação de bancos de dados.
+
+🎯 Objetivos de Aprendizagem
+Aplicar conceitos de computação em nuvem utilizando Microsoft Azure.
+Criar e configurar uma Instância Gerenciada do Azure SQL.
+Entender aspectos de rede, segurança e armazenamento.
+Documentar procedimentos técnicos utilizando GitHub.
+Consolidar conhecimentos para futuras implementações em ambientes corporativos.
+✅ Pré-requisitos
+
+Antes de iniciar a configuração, foram necessários:
+
+Conta Microsoft Azure ativa.
+Assinatura Azure válida.
+Permissões adequadas para criação de recursos.
+Navegador Web com acesso ao Portal Azure.
+Conhecimentos básicos de banco de dados SQL.
+🏗️ Etapas da Implementação
+1. Acesso ao Azure Portal
+
+Acessei o Portal Azure através do endereço:
+
+https://portal.azure.com
+2. Criação da Instância Gerenciada SQL
+
+Navegação realizada:
+
+Plain Text
+1
+Azure SQL → Instâncias Gerenciadas SQL → Criar
+Mostrar mais linhas
+
+Configurações principais:
+
+Configuração	ValorAssinatura	Azure Subscription
+Grupo de Recursos	rg-sql-lab
+Nome da Instância	sqlmi-lab
+Região	Brazil South
+Método de Autenticação	SQL Authentication
+Usuário Administrador	adminsql
+Camada de Serviço	General Purpose
+Hardware	Standard Series Gen5
+vCores	8
+Armazenamento	Conforme necessidade
+3. Configuração de Rede
+
+Foi criada ou selecionada uma:
+
+Virtual Network (VNet)
+Sub-rede dedicada à Managed Instance
+
+Configurações utilizadas:
+
+Plain Text
+1
+Public Endpoint: Desabilitado
+2
+Tipo de Conexão: Padrão
+3
+Segurança: Configuração padrão do Azure
+Mostrar mais linhas
+4. Configurações de Segurança
+
+Mantidas as configurações padrão recomendadas pela Microsoft:
+
+Criptografia habilitada
+Backup automático habilitado
+Controle de acesso baseado em funções (RBAC)
+5. Configurações Adicionais
+
+Definidas conforme necessidade:
+
+Configuração	ValorTime Zone	E. South America Standard Time
+Replicação Geográfica	Não
+Janela de Manutenção	Padrão
+Política de Atualização	SQL Server 2022
+6. Revisão e Implantação
+
+Após validar todas as configurações:
+
+Plain Text
+1
+Review + Create → Create
+Mostrar mais linhas
+
+O processo de provisionamento foi iniciado.
+
+7. Monitoramento da Implantação
+
+O acompanhamento foi realizado através de:
+
+Plain Text
+1
+Notificações → Implantação em andamento
+Mostrar mais linhas
+
+Após a conclusão, a instância ficou disponível no Grupo de Recursos criado.
+
+🗄️ Criação do Banco de Dados
+
+Após a implantação da instância:
+
+Plain Text
+1
+Instância Gerenciada → Novo Banco de Dados
+Mostrar mais linhas
+
+Configurações:
+
+Configuração	ValorNome do Banco	db-laboratorio
+Fonte de Dados	Nenhuma
+Tipo	Banco vazio
+🔗 Recuperação das Informações de Conexão
+
+Na tela de visão geral da instância foram obtidos:
+
+Nome do Host
+FQDN (Fully Qualified Domain Name)
+
+Exemplo:
+
+Plain Text
+1
+sqlmi-lab.public.xxxxxxxxx.database.windows.net
+Mostrar mais linhas
+
+Essas informações são utilizadas para conexão via:
+
+SQL Server Management Studio (SSMS)
+Azure Data Studio
+Aplicações .NET
+Aplicações Java
+
+📚 Aprendizados Obtidos
+
+Durante o laboratório foi possível compreender:
+
+Diferenças entre Azure SQL Database e SQL Managed Instance.
+Importância da configuração correta de rede.
+Uso de grupos de recursos para organização.
+Controle de segurança em ambientes de banco de dados na nuvem.
+Processo de provisionamento gerenciado pelo Azure.
+
+  💡 Dicas Importantes
+Planeje corretamente a VNet e Sub-rede antes da implantação.
+Utilize autenticação Microsoft Entra ID sempre que possível.
+Configure tags para facilitar gerenciamento e custos.
+Evite utilizar informações pessoais nos nomes dos recursos.
+Verifique a região disponível antes da criação da instância.
+
+  🛠️Tecnologias Utilizadas
+Microsoft Azure
+Azure SQL Managed Instance
+Azure Portal
+
