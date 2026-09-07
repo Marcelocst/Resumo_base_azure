@@ -1,0 +1,125 @@
+🖥️ Desafio Azure: Criando uma Máquina Virtual Windows no Portal do Azure
+📖 Descrição
+
+Este projeto documenta o processo de criação de uma Máquina Virtual Windows no Microsoft Azure utilizando o Portal Azure, conforme proposto no desafio. O objetivo foi compreender as etapas de provisionamento de uma VM, conexão remota via RDP, instalação do servidor web IIS e posterior limpeza dos recursos utilizados.
+
+🎯 Objetivos
+Criar uma Máquina Virtual Windows Server no Azure.
+Configurar acesso remoto utilizando RDP.
+Instalar e validar o funcionamento do servidor IIS.
+Aprender boas práticas de gerenciamento de recursos no Azure.
+Documentar todo o processo em um repositório GitHub.
+✅ Pré-requisitos
+
+Antes de iniciar, é necessário:
+
+Possuir uma conta Microsoft.
+Possuir uma assinatura Azure (pode ser gratuita).
+Acessar o Portal Azure.
+
+Portal:
+
+Plain Text
+1
+https://portal.azure.com
+Mostrar mais linhas
+🚀 Etapa 1: Criação da Máquina Virtual
+Acesso ao Portal
+Entrar no Portal Azure.
+Pesquisar por Máquinas Virtuais.
+Selecionar Criar > Máquina Virtual.
+Configurações da VM
+Detalhes da Instância
+Configuração	ValorNome da VM	myVM
+Sistema Operacional	Windows Server 2022 Datacenter: Azure Edition - x64 Gen 2
+Região	Padrão
+Tamanho	Padrão sugerido pelo Azure
+Conta de Administrador
+Campo	ValorUsuário	azureuser
+Senha	Senha forte com mais de 12 caracteres
+Regras de Porta de Entrada
+
+Selecionar:
+
+✅ RDP (3389)
+✅ HTTP (80)
+⚙️ Etapa 2: Configuração de Gerenciamento
+
+Na guia Gerenciamento:
+
+Habilitar Desligamento Automático.
+Definir horário de desligamento.
+Configurar fuso horário.
+
+Essa configuração ajuda a evitar custos desnecessários.
+
+🛠️ Etapa 3: Implantação da VM
+Clicar em Examinar + Criar.
+Aguardar a validação.
+Selecionar Criar.
+Aguardar a implantação.
+Clicar em Ir para o recurso.
+🔗 Etapa 4: Conexão com a VM
+Baixar arquivo RDP
+
+Na página da VM:
+
+Selecionar Conectar.
+Escolher RDP Nativa.
+Clicar em Verificar acesso.
+Selecionar Baixar arquivo RDP.
+Acesso
+Abrir o arquivo .rdp.
+Informar usuário e senha cadastrados.
+Aceitar o certificado.
+🌐 Etapa 5: Instalação do Servidor IIS
+
+Após acessar a VM:
+
+Abrir o PowerShell como Administrador e executar:
+
+PowerShell
+1
+Install-WindowsFeature -Name Web-Server -IncludeManagementTools
+Mostrar mais linhas
+
+Aguardar a instalação ser concluída.
+
+✅ Etapa 6: Teste do IIS
+Copiar o endereço IP público da VM.
+Abrir um navegador.
+Colar o IP na barra de endereços.
+
+Exemplo:
+
+Plain Text
+1
+http://IP-DA-VM
+Mostrar mais linhas
+
+Resultado esperado:
+
+A página padrão do IIS deve ser exibida com sucesso.
+
+🧹 Etapa 7: Limpeza dos Recursos
+
+Para evitar cobranças:
+
+Acessar o Grupo de Recursos.
+Selecionar Excluir Grupo de Recursos.
+Informar o nome do grupo.
+Confirmar exclusão.
+
+Todos os recursos associados à VM serão removidos.
+
+📚 Aprendizados
+
+Durante a realização deste laboratório foi possível aprender:
+
+Conceitos de Infraestrutura como Serviço (IaaS).
+Provisionamento de Máquinas Virtuais no Azure.
+Configuração de portas de rede.
+Acesso remoto via RDP.
+Instalação de serviços utilizando PowerShell.
+Gerenciamento de custos através do desligamento automático.
+Exclusão segura de recursos para evitar cobranças.
