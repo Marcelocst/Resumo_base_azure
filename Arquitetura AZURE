@@ -1,0 +1,238 @@
+Azure: Arquitetura e Principais Componentes — AZ-900
+
+Introdução
+
+Como parte dos meus estudos para a certificação Microsoft Azure Fundamentals (AZ-900), estudei o módulo Arquitetura e Serviços do Azure, com foco na compreensão da estrutura física e lógica utilizada pelo Azure para disponibilizar seus serviços de computação em nuvem.
+
+Neste módulo, foram abordados conceitos fundamentais para entender como os recursos do Azure são organizados, administrados e distribuídos globalmente, incluindo **regiões, zonas de disponibilidade, datacenters, recursos, grupos de recursos, assinaturas e grupos de gerenciamento**.
+
+Compreender esses componentes é importante para entender como uma infraestrutura em nuvem pode ser estruturada de forma organizada, escalável e resiliente.
+
+---
+
+## 🌎 Regiões do Azure
+
+Uma **região do Azure** representa uma área geográfica onde a Microsoft possui uma infraestrutura de datacenters.
+
+As regiões são compostas por um ou mais datacenters localizados próximos uns dos outros. Essa estrutura permite oferecer maior flexibilidade e escalabilidade, além de contribuir para a redução da latência para os usuários.
+
+Outro aspecto importante é a **residência dos dados**, já que a escolha da região pode estar relacionada a requisitos de conformidade e localização das informações.
+
+O Azure possui uma ampla presença global, disponibilizando mais de 60 regiões em diferentes partes do mundo.
+
+### Por que as regiões são importantes?
+
+A escolha de uma região pode influenciar:
+
+* 🌐 Latência para os usuários;
+* 📊 Escalabilidade da solução;
+* 🔐 Requisitos de conformidade;
+* 📍 Localização dos dados;
+* 🏢 Disponibilidade dos serviços.
+
+---
+
+## 🏢 Datacenters
+
+Os **datacenters** são a infraestrutura física responsável por hospedar os recursos e serviços de nuvem.
+
+Eles possuem componentes fundamentais, como:
+
+* Alimentação elétrica;
+* Sistemas de resfriamento;
+* Infraestrutura de rede;
+* Equipamentos responsáveis pelo processamento e armazenamento.
+
+Dentro da arquitetura do Azure, os datacenters são agrupados em regiões, formando a base física sobre a qual os serviços de nuvem são executados.
+
+---
+
+## 🛡️ Zonas de Disponibilidade
+
+As **Zonas de Disponibilidade (Availability Zones)** são uma importante estratégia de resiliência do Azure.
+
+Elas consistem em datacenters fisicamente separados dentro de uma mesma região. Cada zona possui infraestrutura independente de:
+
+* ⚡ Energia;
+* ❄️ Resfriamento;
+* 🌐 Rede.
+
+As zonas são conectadas por meio de redes privadas de fibra óptica.
+
+O principal objetivo é reduzir o impacto de uma eventual falha em um datacenter. Dessa forma, uma aplicação distribuída entre diferentes zonas pode continuar funcionando mesmo diante de uma interrupção em uma delas.
+
+### Exemplo conceitual
+
+Imagine uma aplicação hospedada em uma única infraestrutura. Caso esse datacenter apresente uma falha, a aplicação poderá ficar indisponível.
+
+Ao utilizar zonas de disponibilidade, os componentes da aplicação podem ser distribuídos entre diferentes datacenters da mesma região, aumentando sua resiliência.
+
+---
+
+## 🔄 Pares de Regiões
+
+O Azure também utiliza o conceito de **Pares de Regiões (Region Pairs)**.
+
+Duas regiões são associadas para oferecer benefícios relacionados à continuidade e recuperação de serviços.
+
+Entre os pontos apresentados no estudo estão:
+
+* Distância mínima aproximada de 300 milhas entre pares de regiões;
+* Replicação automática para alguns serviços;
+* Priorização da recuperação de uma região em situações de interrupção;
+* Distribuição sequencial de determinadas atualizações para minimizar indisponibilidades.
+
+Esse conceito está diretamente relacionado à criação de estratégias de continuidade e recuperação em ambientes de nuvem.
+
+---
+
+## 🏛️ Regiões Soberanas do Azure
+
+Além das regiões convencionais, o Azure possui **regiões soberanas**, destinadas a necessidades específicas de segurança e conformidade.
+
+Um exemplo apresentado no material é o **Azure Government**, uma instância separada do Azure destinada ao governo dos Estados Unidos.
+
+Essa infraestrutura possui isolamento físico de implantações que não pertencem ao governo dos EUA e possui acesso restrito a pessoal autorizado.
+
+---
+
+# 🧩 Recursos do Azure
+
+Os **recursos do Azure** são os componentes utilizados para construir soluções na nuvem.
+
+Entre os exemplos estudados estão:
+
+* Máquinas virtuais;
+* Armazenamento;
+* Redes;
+* Outros serviços disponibilizados pela plataforma Azure.
+
+Cada recurso possui uma finalidade específica e pode fazer parte de uma solução maior.
+
+Por exemplo, uma aplicação pode utilizar simultaneamente uma máquina virtual, armazenamento e recursos de rede.
+
+---
+
+# 📦 Grupos de Recursos
+
+Um **Grupo de Recursos (Resource Group)** é um contêiner utilizado para organizar e gerenciar recursos do Azure como uma unidade.
+
+Ele facilita a administração dos recursos relacionados a uma determinada solução ou aplicação.
+
+Um ponto importante aprendido é que **um recurso pode pertencer a apenas um grupo de recursos por vez**.
+
+Entretanto, uma aplicação pode utilizar recursos que estejam distribuídos em diferentes grupos de recursos.
+
+Também é possível mover recursos entre grupos de recursos, de acordo com as necessidades de organização e gerenciamento.
+
+### Exemplo
+
+Uma empresa pode organizar sua infraestrutura da seguinte maneira:
+
+```text
+Grupo de Recursos: Aplicacao-Web
+│
+├── Máquina Virtual
+├── Banco de Dados
+├── Rede
+└── Armazenamento
+```
+
+Essa organização facilita a administração e o gerenciamento dos componentes relacionados à aplicação.
+
+---
+
+# 💳 Assinaturas do Azure
+
+A **assinatura do Azure (Subscription)** fornece acesso autenticado e autorizado aos recursos da plataforma.
+
+As assinaturas também possuem funções importantes relacionadas à administração e ao controle dos recursos.
+
+### Limite de cobrança
+
+Cada assinatura pode ser utilizada como um limite para gerenciamento de cobrança, permitindo a geração de relatórios e faturas separadas.
+
+### Limite de controle de acesso
+
+As assinaturas também ajudam a controlar quais recursos os usuários podem provisionar e administrar.
+
+Dessa forma, uma organização pode utilizar diferentes assinaturas para separar ambientes, departamentos, projetos ou necessidades de gerenciamento.
+
+---
+
+# 🗂️ Grupos de Gerenciamento
+
+Os **Grupos de Gerenciamento (Management Groups)** permitem organizar múltiplas assinaturas do Azure em uma estrutura hierárquica.
+
+Uma característica importante é que as assinaturas podem herdar condições e políticas aplicadas ao grupo de gerenciamento.
+
+Isso permite administrar recursos em uma escala maior, evitando a necessidade de configurar individualmente cada assinatura.
+
+---
+
+# 🏗️ Hierarquia do Azure
+
+Um dos conceitos mais importantes estudados foi a relação hierárquica entre os componentes.
+
+De forma simplificada:
+
+```text
+Grupo de Gerenciamento
+        │
+        ├── Assinatura
+        │      │
+        │      ├── Grupo de Recursos
+        │      │      ├── Recurso
+        │      │      ├── Recurso
+        │      │      └── Recurso
+        │      │
+        │      └── Grupo de Recursos
+        │             ├── Recurso
+        │             └── Recurso
+        │
+        └── Assinatura
+               │
+               └── Grupo de Recursos
+```
+
+Essa estrutura permite organizar o ambiente Azure desde um nível mais amplo, representado pelos **grupos de gerenciamento**, até os recursos individuais utilizados pelas aplicações.
+
+---
+
+# 🧠 Principais aprendizados
+
+Ao finalizar o módulo, os principais conceitos consolidados foram:
+
+| Conceito                    | O que representa                                                        |
+| --------------------------- | ----------------------------------------------------------------------- |
+| **Região**                  | Localização geográfica da infraestrutura Azure                          |
+| **Datacenter**              | Infraestrutura física onde os serviços são executados                   |
+| **Zona de Disponibilidade** | Datacenter fisicamente separado dentro de uma região                    |
+| **Par de Regiões**          | Associação entre regiões para melhorar resiliência e recuperação        |
+| **Região Soberana**         | Ambiente destinado a requisitos específicos de segurança e conformidade |
+| **Recurso**                 | Componente utilizado para construir soluções no Azure                   |
+| **Grupo de Recursos**       | Contêiner para organizar e gerenciar recursos                           |
+| **Assinatura**              | Estrutura de acesso, cobrança e controle de recursos                    |
+| **Grupo de Gerenciamento**  | Estrutura para organizar e administrar múltiplas assinaturas            |
+
+---
+
+# 🎯 Conclusão
+
+O estudo da arquitetura do Azure permitiu compreender que uma infraestrutura em nuvem não é formada apenas pelos serviços que utilizamos, mas também por uma estrutura organizada de **infraestrutura física, disponibilidade, localização, gerenciamento e controle de acesso**.
+
+Conceitos como **regiões e zonas de disponibilidade** estão diretamente relacionados à disponibilidade e resiliência. Já **recursos, grupos de recursos, assinaturas e grupos de gerenciamento** fornecem uma estrutura lógica para organização, administração, cobrança e controle do ambiente.
+
+Esse conhecimento é uma base importante para avançar nos estudos de Azure e compreender posteriormente serviços mais específicos da plataforma.
+
+## 📚 Referências
+
+* Microsoft Learn — Azure Fundamentals
+* Microsoft Learn — Describe the core architectural components of Azure
+* Material de estudo do curso AZ-900 — Módulo 2: Arquitetura e Serviços do Azure
+
+---
+
+### 🚀 Próximos passos
+
+Após compreender a arquitetura básica do Azure, o próximo passo nos estudos é aprofundar o conhecimento nos principais serviços disponibilizados pela plataforma e entender como esses serviços podem ser utilizados na construção de soluções de computação em nuvem.
