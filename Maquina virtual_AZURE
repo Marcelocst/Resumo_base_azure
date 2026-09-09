@@ -1,0 +1,154 @@
+MÁQUINA_VIRTUAL_AZUL
+Este repositório contém o resumo das lições aprendidas durante o desenvolvimento do laboratório na DIO SOBRE MAQUINAS VIRTUAL DO AZURE".
+
+Configurando Recursos e Dimensionamentos em Máquinas Virtuais Azure
+Introdução
+As Máquinas Virtuais (VMs) do Microsoft Azure permitem criar ambientes computacionais na nuvem de acordo com as necessidades de cada aplicação. Durante o estudo, o foco foi compreender como configurar os recursos de uma máquina virtual e realizar seu dimensionamento , considerando características como capacidade de processamento, memória, armazenamento e necessidades do ambiente.
+
+A configuração adequada desses recursos é fundamental para garantir que uma máquina virtual possua capacidade suficiente para executar suas aplicações, evitando tanto a falta de recursos quanto o uso necessário de uma infraestrutura maior.
+
+Máquinas Virtuais no Azure
+Uma Máquina Virtual Azure é um recurso de computação que permite executar um sistema operacional e aplicações utilizando a infraestrutura de nuvem da Microsoft.
+
+Ao criar uma VM, é necessário definir diversas características do ambiente, incluindo:
+
+Sistema operacional;
+Região;
+Grupo de recursos;
+Tamanho da máquina;
+Processamento;
+Memória;
+Discotecas;
+Configurações de rede.
+Essas escolhas determinam as características e a capacidade da máquina virtual.
+
+Configuração dos recursos
+Um dos principais pontos treinados é a escolha dos recursos que serão disponibilizados para a VM.
+
+A configuração deve estar relacionada às necessidades da aplicação que será realizada.
+
+Entre os principais recursos estão:
+
+Processador
+A capacidade de processamento influencia diretamente a quantidade de operações que uma máquina consegue realizar.
+
+Aplicativos que desativam maior processamento podem necessitar de máquinas virtuais com maior capacidade de CPU.
+
+Memória
+A memória RAM é utilizada para armazenar temporariamente os dados e processos utilizados pelas aplicações.
+
+Aplicações que trabalham com grandes volumes de dados ou processos múltiplos simultaneamente podem exigir maior quantidade de memória.
+
+♤
+Os discos usados ​​pela máquina virtual são responsáveis ​​pelo armazenamento do sistema operacional, aplicações e dados.
+
+A escolha do armazenamento deve considerar não apenas a capacidade disponível, mas também as necessidades de aplicação.
+
+Rede
+Uma máquina virtual também precisa estar integrada a uma infraestrutura de rede, permitindo sua comunicação com outros recursos e serviços.
+
+📏 Dimensionamento da VM
+O dimensionamento consiste em escolher uma configuração de recursos adequados para determinada carga de trabalho.
+
+O objetivo é encontrar um equilíbrio entre:
+
+Necessidade da aplicação → Recursos disponíveis → Desempenho → Custo
+
+Uma VM com poucos recursos pode apresentar problemas de desempenho. Por outro lado, uma VM com recursos muito superiores aos necessários pode representar um custo desnecessário.
+
+Por isso, o dimensionamento deve ser realizado considerando especificamente a máquina virtual.
+
+Redimensionamento
+Uma característica importante das máquinas virtuais do Azure é a possibilidade de alterar sua configuração conforme a necessidade.
+
+Por exemplo, uma máquina virtual configurada inicialmente para uma carga de trabalho pequena pode posteriormente precisar de mais capacidade.
+
+Nesse cenário, pode ser realizado um redimensionamento , escolhendo outro tamanho de VM que disponibilize recursos adicionais.
+
+De forma simplificada:
+
+Necessidade inicial
+       ↓
+VM menor
+       ↓
+Aumento da demanda
+       ↓
+Redimensionamento
+       ↓
+VM com maior capacidade
+Esse processo permite adaptar a infraestrutura às mudanças na demanda.
+
+Escolha do tamanho da máquina virtual
+O Azure disponibiliza diferentes tamanhos de máquinas virtuais.
+
+Cada tamanho possui características específicas relacionadas aos recursos disponibilizados.
+
+A escolha deve considerar principalmente:
+
+Quantidade de CPU;
+Quantidade de dir;
+de;
+Necessidade de desempenho;
+Características da aplicação;
+Custo do recurso.
+Não existe um único tamanho ideal para todas as situações. A configuração adequada depende da carga de trabalho que será realizada.
+
+Relação entre dimensionamento e custos
+Um dos pontos importantes no uso de máquinas virtuais na nuvem é o controle dos custos.
+
+Ao selecionar uma VM, é necessário avaliar se os recursos disponibilizados são realmente necessários.
+
+Por:
+
+VM subdimensionada
+       ↓
+Baixo desempenho
+       ↓
+Necessidade de aumentar recursos
+
+
+VM superdimensionada
+       ↓
+Recursos ociosos
+       ↓
+Custo desnecessário
+O dimensionamento adequado busca evitar os dois cenários.
+
+Exemplo de configuração
+Considerando uma aplicação de pequeno porte, podemos imaginar inicialmente uma VM com recursos suficientes para sua carga de trabalho.
+
+Máquina Virtual Azure
+│
+├── Sistema Operacional
+├── CPU
+├── Memória RAM
+├── Disco
+└── Rede
+Caso a aplicação cresça e passe a exigir maior capacidade computacional, a máquina poderá ser redimensionada.
+
+Assim, a infraestrutura acompanha a necessidade de aplicação sem que seja necessário manter desde o início uma máquina com capacidade excessiva.
+
+Principais cargas
+Durante o estudo, os principais conceitos relacionados à configuração e ao dimensionamento de máquinas virtuais foram:
+
+Conceito	Objetivo
+conjunto virtual	Disponibilizar capacidade computacional na nuvem
+CPU	fornecer capacidade de processamento
+Memória RAM	Apoiar processos e aplicações em execução
+Discoteca	Armazenar sistema, aplicações e dados
+Rede	Permitir comunicação com outros recursos
+Tamanho da VM	Definir a combinação de recursos disponíveis
+Dimensionamento	Adequar os recursos às necessidades da aplicação
+Redimensionamento	Alterar a capacidade da VM conforme a demanda
+Custo	Considerar o consumo de recursos na escolha da VM
+Conclusão
+O estudo de Configuração de Recursos e Dimensionamentos em Máquinas Virtuais Azure permitiu compreender a importância de selecionar especificamente os recursos de uma máquina virtual antes e durante sua utilização.
+
+A escolha da capacidade de processamento, memória, armazenamento e demais recursos deve estar relacionada às necessidades da aplicação. Um dimensionamento adequado contribui para obter um ambiente equilibrado entre desempenho e utilização eficiente de recursos .
+
+Outro ponto importante é a possibilidade de realizar ajustes conforme a demanda. Dessa forma, a infraestrutura Azure pode acompanhar a evolução das aplicações e dos ambientes computacionais.
+
+Esse representa conhecimento uma etapa importante na minha formação em Cloud Computing e nos estudos para a certificação Microsoft Azure Fundamentals (AZ-900) .
+
+então-chave
+Microsoft Azure· Azure Virtual Machines· VM· Cloud Computing· Dimensionamento· Redimensionamento· CPU· RAM· Storage· Networking·AZ-900
