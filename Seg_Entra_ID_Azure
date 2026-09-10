@@ -1,0 +1,399 @@
+Microsoft Entra ID: Identidade, Autenticação e Segurança no Azure
+
+Introdução
+
+O Microsoft Entra ID é o serviço de gerenciamento de identidades e acessos baseado em nuvem da Microsoft. Ele permite controlar quem pode acessar recursos, aplicações e serviços, além de definir como esses acessos devem ser autenticados e quais condições precisam ser atendidas.
+
+Durante meus estudos sobre **Microsoft Azure**, aprofundei meus conhecimentos em gerenciamento de diretórios, autenticação, identidades externas, acesso condicional e no conceito de Zero Trust.
+
+Este artigo apresenta os principais conceitos estudados e sua importância para a construção de ambientes Azure mais seguros.
+
+---
+
+## ☁️ 1. Diretórios no Azure
+
+Um diretório funciona como uma estrutura centralizada para gerenciamento de identidades, usuários, grupos, dispositivos e aplicações.
+
+No ecossistema Microsoft Azure, os principais conceitos estudados foram:
+
+* Microsoft Entra ID
+* Microsoft Entra Domain Services
+* Usuários e grupos
+* Identidades de aplicações
+* Dispositivos
+* Políticas de acesso
+* Identidades externas
+
+O diretório permite que uma organização centralize o gerenciamento de identidade e controle o acesso aos recursos corporativos.
+
+---
+
+# 🆔 2. Microsoft Entra ID
+
+O Microsoft Entra ID é o serviço de identidade e gerenciamento de acesso baseado em nuvem da Microsoft.
+
+Ele permite administrar:
+
+* Usuários;
+* Grupos;
+* Aplicações;
+* Dispositivos;
+* Identidades externas;
+* Permissões;
+* Métodos de autenticação;
+* Políticas de segurança;
+* Acesso aos recursos.
+
+Uma das principais vantagens é possibilitar que uma identidade seja utilizada para acessar diferentes aplicações e serviços sem a necessidade de criar uma conta separada em cada sistema.
+
+### Exemplos de utilização
+
+Uma empresa pode utilizar o Entra ID para permitir que seus colaboradores utilizem suas credenciais corporativas para acessar:
+
+* Microsoft 365;
+* Azure;
+* Microsoft Teams;
+* SharePoint;
+* Aplicações corporativas;
+* Aplicações SaaS integradas ao Entra ID.
+
+---
+
+# 🏢 3. Microsoft Entra Domain Services
+
+O Microsoft Entra Domain Services fornece serviços de domínio gerenciados, permitindo que aplicações e máquinas virtuais utilizem recursos tradicionais relacionados ao Active Directory.
+
+Entre os recursos disponibilizados estão:
+
+* Domain Join;
+* Group Policy;
+* LDAP;
+* Autenticação Kerberos;
+* Autenticação NTLM.
+
+Uma característica importante é que o serviço é gerenciado pela Microsoft, reduzindo a necessidade de administrar controladores de domínio tradicionais.
+
+Entra ID x Entra Domain Services
+
+| Microsoft Entra ID                     | Microsoft Entra Domain Services             |
+| -------------------------------------- | ------------------------------------------- |
+| Serviço de identidade baseado em nuvem | Serviços de domínio gerenciados             |
+| Principalmente autenticação moderna    | Compatibilidade com protocolos tradicionais |
+| OAuth, OpenID Connect, SAML etc.       | LDAP, Kerberos e NTLM                       |
+| Usuários, grupos e aplicações          | Domain Join e Group Policy                  |
+| Ideal para aplicações modernas         | Útil para aplicações legadas                |
+
+Os dois serviços podem trabalhar de forma complementar em determinados cenários.
+
+---
+
+🔑 4. Métodos de autenticação no Azure
+
+A autenticação é o processo utilizado para verificar a identidade de um usuário ou entidade.
+
+O Microsoft Entra oferece diferentes mecanismos de autenticação, permitindo que as organizações escolham métodos de acordo com seus requisitos de segurança.
+
+Entre os conceitos estudados estão:
+
+* Senhas;
+* Autenticação multifator (MFA);
+* Autenticação sem senha;
+* Single Sign-On (SSO).
+
+---
+
+🔄 5. Single Sign-On — SSO
+
+O **Single Sign-On (SSO)** permite que o usuário faça autenticação uma única vez e consiga acessar diferentes aplicações autorizadas sem precisar informar novamente suas credenciais.
+
+Exemplo
+
+Um funcionário realiza login utilizando sua conta corporativa e, depois disso, consegue acessar aplicações como:
+
+Microsoft 365 → Teams → SharePoint → Aplicações corporativas
+
+sem precisar realizar um novo login em cada serviço.
+
+Benefícios
+
+* Melhor experiência do usuário;
+* Redução da quantidade de senhas;
+* Administração centralizada;
+* Redução de solicitações de redefinição de senha;
+* Maior controle sobre os acessos.
+
+---
+
+🛡️ 6. Autenticação Multifator — MFA
+
+A MFA (Multi-Factor Authentication) adiciona uma camada adicional de segurança ao processo de autenticação.
+
+Em vez de depender apenas da senha, o usuário precisa comprovar sua identidade utilizando outro fator.
+
+Exemplo:
+
+Senha + aplicativo autenticador
+
+Dessa forma, mesmo que uma senha seja comprometida, o invasor ainda poderá encontrar uma segunda barreira de segurança.
+
+A MFA é especialmente importante para proteger contas administrativas e recursos críticos.
+
+---
+
+# 🔐 7. Autenticação sem senha
+
+A autenticação sem senha busca eliminar a dependência das senhas tradicionais.
+
+Entre as tecnologias e métodos associados ao ecossistema Microsoft estão:
+
+* Microsoft Authenticator;
+* Windows Hello for Business;
+* FIDO2;
+* Chaves de segurança.
+
+O objetivo é aumentar a segurança e, ao mesmo tempo, melhorar a experiência do usuário.
+
+As senhas são frequentemente alvo de ataques como:
+
+* Phishing;
+* Credential stuffing;
+* Password spraying;
+* Ataques de força bruta.
+
+Reduzir a dependência de senhas pode diminuir significativamente determinados riscos relacionados às credenciais.
+
+---
+
+# 🌎 8. Identidades externas
+
+O Microsoft Entra ID também permite trabalhar com identidades externas, possibilitando que pessoas de fora da organização tenham acesso controlado aos recursos.
+
+Esse recurso é importante em cenários envolvendo:
+
+* Parceiros;
+* Fornecedores;
+* Consultores;
+* Clientes;
+* Colaboradores externos.
+
+Em vez de criar uma identidade interna completa para cada pessoa externa, a organização pode utilizar mecanismos de colaboração e gerenciamento de convidados.
+
+---
+
+👤 9. Acesso de convidado
+
+O acesso de convidado permite que usuários externos participem de ambientes corporativos com permissões controladas.
+
+Por exemplo:
+
+> Uma empresa precisa compartilhar um projeto do SharePoint com um fornecedor externo.
+
+Em vez de conceder acesso irrestrito, o fornecedor pode receber uma identidade de convidado e acessar somente os recursos necessários.
+
+Esse modelo ajuda a aplicar o princípio de:
+
+**"Acesso somente ao que é necessário."**
+
+---
+
+# 🚦 10. Acesso Condicional — Conditional Access
+
+O **Microsoft Entra Conditional Access** permite criar políticas que determinam quando, como e em quais condições um usuário poderá acessar determinado recurso.
+
+A decisão de acesso pode considerar diferentes sinais, como:
+
+* Usuário;
+* Grupo;
+* Aplicação;
+* Dispositivo;
+* Localização;
+* Risco;
+* Tipo de acesso;
+* Estado de conformidade do dispositivo.
+
+Exemplo de política
+
+Uma organização pode definir:
+
+> "Usuários que acessarem uma aplicação corporativa fora de uma localização confiável deverão utilizar MFA."
+
+Outro exemplo:
+
+> "Dispositivos que não atendam aos requisitos de segurança não poderão acessar determinado recurso."
+
+Dessa forma, o acesso deixa de depender exclusivamente de usuário e senha.
+
+---
+
+🏰 11. Zero Trust
+
+Um dos conceitos mais importantes estudados foi o modelo de segurança Zero Trust.
+
+O princípio fundamental é:
+
+> "Never trust, always verify."
+
+Ou seja:
+
+Nunca confie automaticamente. Sempre verifique.
+
+No modelo tradicional, um usuário que estivesse dentro da rede corporativa poderia receber determinado nível de confiança.
+
+No modelo Zero Trust, estar dentro da rede não significa automaticamente que o usuário ou dispositivo é confiável.
+
+A autenticação e autorização precisam ser avaliadas continuamente de acordo com o contexto.
+
+---
+
+## 🔍 Princípios do Zero Trust
+
+O modelo pode ser compreendido através de três princípios fundamentais:
+
+### 1. Verify explicitly
+
+Verificar explicitamente cada solicitação de acesso utilizando informações disponíveis sobre:
+
+* Identidade;
+* Localização;
+* Dispositivo;
+* Aplicação;
+* Risco;
+* Contexto.
+
+2. Use least privilege access
+
+Conceder somente o nível de acesso necessário para que o usuário execute sua atividade.
+
+3. Assume breach
+
+Considerar que uma violação pode acontecer e preparar o ambiente para limitar seus impactos.
+
+Isso envolve:
+
+* Segmentação;
+* Monitoramento;
+* Criptografia;
+* Controle de acesso;
+* Detecção de ameaças;
+* Resposta a incidentes.
+
+---
+
+🔗 12. Como os conceitos se relacionam
+
+Uma arquitetura de identidade segura pode combinar diversos recursos do Microsoft Entra.
+
+Um exemplo:
+
+text
+                    ┌──────────────────────┐
+                    │     Usuário          │
+                    └──────────┬───────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │   Microsoft Entra ID │
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────▼───────────┐
+                    │   Autenticação       │
+                    │ SSO / MFA / Passwordless
+                    └──────────┬───────────┘
+                               │
+                    ┌──────────▼───────────┐
+                    │ Acesso Condicional   │
+                    └──────────┬───────────┘
+                               │
+                 ┌─────────────▼─────────────┐
+                 │      Decisão de acesso    │
+                 │                            │
+                 │ Permitido / Bloqueado     │
+                 │ MFA obrigatório            │
+                 │ Acesso limitado            │
+                 └─────────────┬─────────────┘
+                               │
+                               ▼
+                    ┌──────────────────────┐
+                    │ Recurso / Aplicação  │
+                    └──────────────────────┘
+```
+
+Esse fluxo demonstra como identidade, autenticação e políticas de segurança podem trabalhar juntas.
+
+---
+
+# 🧠 13. Principais aprendizados
+
+O estudo do Microsoft Entra ID permitiu compreender que segurança em nuvem não depende apenas de proteger servidores e redes.
+
+A identidade tornou-se um dos principais componentes da segurança moderna.
+
+Entre os principais aprendizados estão:
+
+✅ Gerenciamento centralizado de identidades;
+
+✅ Controle de usuários e grupos;
+
+✅ Integração com aplicações;
+
+✅ Autenticação multifator;
+
+✅ Autenticação sem senha;
+
+✅ Single Sign-On;
+
+✅ Gerenciamento de usuários externos;
+
+✅ Controle de acesso de convidados;
+
+✅ Políticas de Acesso Condicional;
+
+✅ Princípio do menor privilégio;
+
+✅ Arquitetura Zero Trust.
+
+---
+
+#Conclusão
+
+O Microsoft Entra ID desempenha um papel fundamental na estratégia de identidade e segurança do ecossistema Microsoft Azure.
+
+Ao combinar identidade, autenticação, MFA, SSO, autenticação sem senha, identidades externas e Acesso Condicional, as organizações conseguem estabelecer controles mais eficientes sobre quem pode acessar seus recursos e em quais condições.
+
+O conceito de Zero Trust complementa essa estratégia ao eliminar a confiança implícita e exigir que cada solicitação de acesso seja avaliada de acordo com seu contexto.
+
+Esse estudo representa mais uma etapa da minha evolução nos conhecimentos de **Cloud Computing, Microsoft Azure, Redes e Segurança da Informação**, fortalecendo minha preparação para atuar profissionalmente em ambientes de infraestrutura e nuvem.
+
+---
+
+## Tecnologias e conceitos estudados
+
+* Microsoft Azure
+* Microsoft Entra ID
+* Microsoft Entra Domain Services
+* Identity & Access Management (IAM)
+* Single Sign-On (SSO)
+* Multi-Factor Authentication (MFA)
+* Passwordless Authentication
+* External Identities
+* Guest Access
+* Conditional Access
+* Least Privilege
+* Zero Trust
+* Cloud Security
+* Identity Security
+
+---
+
+### Próximos passos
+
+Como continuidade dos estudos em Azure, os próximos temas que pretendo aprofundar incluem:
+
+* Microsoft Entra roles;
+* Managed Identities;
+* Service Principals;
+* Microsoft Defender for Cloud;
+* Microsoft Sentinel;
+* Microsoft Entra ID Protection;
+* Governança e Compliance;
+* Monitoramento e auditoria de identidades.
