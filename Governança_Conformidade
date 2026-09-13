@@ -1,0 +1,463 @@
+# Governança e Conformidade no Microsoft Azure
+
+# Introdução
+
+À medida que uma organização aumenta sua utilização de serviços em nuvem, torna-se necessário estabelecer regras para controlar recursos, acessos, configurações, custos, segurança e conformidade.
+
+No Microsoft Azure, a Governança e Conformidade fornece mecanismos que ajudam as organizações a manter seus ambientes organizados, seguros e alinhados às políticas internas e aos requisitos regulatórios.
+
+Durante meus estudos, conheci conceitos e ferramentas como Azure Policy, Blueprints, bloqueios de recursos, Tags, Microsoft Purview e Portal de Confiança do Serviço, além da importância da governança para ambientes de computação em nuvem.
+
+---
+
+# 1. O que é Governança no Azure?
+
+A governança em nuvem consiste em estabelecer regras, padrões e controles para administrar os recursos de uma organização.
+
+No Azure, a governança ajuda a responder perguntas como:
+
+Quem pode criar determinados recursos?
+Quais regiões do Azure podem ser utilizadas?
+Quais configurações são permitidas?
+Como os recursos devem ser identificados?
+Como impedir alterações ou exclusões acidentais?
+Como garantir que os recursos estejam de acordo com as políticas da empresa?
+Como acompanhar requisitos de conformidade?
+
+O objetivo é permitir que a empresa tenha controle sobre seu ambiente de nuvem sem impedir sua evolução.
+
+---
+
+# 2. Governança x Conformidade
+
+Embora estejam relacionadas, governança e conformidade possuem objetivos diferentes.
+
+### Governança
+
+Está relacionada à criação de regras e controles para administrar o ambiente.
+
+Exemplos:
+
+```text
+Quem pode criar recursos?
+Quais regiões podem ser utilizadas?
+Quais tipos de recursos são permitidos?
+Quais Tags devem ser utilizadas?
+```
+
+### Conformidade
+
+Está relacionada à capacidade de demonstrar que o ambiente atende a requisitos, normas, regulamentações e políticas.
+
+Exemplos:
+
+```text
+Proteção de dados
+Privacidade
+Segurança
+Requisitos regulatórios
+Políticas internas
+```
+
+Podemos representar:
+
+```text
+Governança
+    ↓
+Define regras e controles
+    ↓
+Ambiente Azure
+    ↓
+Monitoramento e avaliação
+    ↓
+Conformidade
+```
+
+---
+
+# 3. Azure Blueprints
+
+O Azure Blueprints foi desenvolvido para ajudar a criar ambientes Azure padronizados e repetíveis, combinando diferentes componentes de governança.
+
+Um Blueprint poderia reunir, por exemplo:
+
+```text
+Blueprint
+   ├── Azure Policy
+   ├── RBAC
+   ├── Resource Groups
+   └── Templates
+```
+
+A ideia era permitir que uma organização estabelecesse um conjunto de padrões para novas assinaturas ou ambientes.
+
+# Exemplo
+
+Uma empresa pode definir que todos os seus ambientes devem:
+
+ Utilizar determinadas regiões;
+ Possuir políticas específicas;
+ Utilizar determinados controles de acesso;
+ Possuir uma estrutura padronizada;
+ Seguir requisitos de segurança.
+
+Assim, novos ambientes poderiam seguir um padrão previamente definido.
+
+> Observação: o Azure Blueprints entrou em um processo de substituição por recursos de governança mais modernos, especialmente Azure Policy e iniciativas de políticas. Por isso, é importante conhecer o conceito histórico, mas também compreender as abordagens atuais de governança do Azure.
+
+---
+
+# 4. Azure Policy
+
+O Azure Policy é uma das principais ferramentas de governança do Azure.
+
+Ele permite criar, aplicar e avaliar regras sobre os recursos existentes e novos recursos.
+
+Por exemplo, uma organização pode criar uma política determinando:
+
+```text
+Permitir recursos somente em determinadas regiões.
+```
+
+Ou:
+
+```text
+Todos os recursos devem possuir uma Tag específica.
+```
+
+Outro exemplo:
+
+```text
+Impedir determinados tipos de recursos.
+```
+
+### Estrutura simplificada
+
+```text
+Azure Policy
+      ↓
+Define uma regra
+      ↓
+Avalia os recursos
+      ↓
+Identifica conformidade
+      ↓
+Pode impedir ou corrigir determinadas configurações
+```
+
+---
+
+# 5. Iniciativas de Políticas
+
+Quando várias políticas estão relacionadas, elas podem ser agrupadas em uma Initiative, também conhecida como conjunto de políticas.
+
+Exemplo:
+
+text
+Iniciativa: Segurança da Empresa
+
+├── Política de localização
+├── Política de Tags
+├── Política de criptografia
+├── Política de tipos de recursos
+└── Política de segurança
+```
+
+Isso facilita o gerenciamento de várias regras de governança.
+
+---
+
+# 6. Bloqueios de Recursos
+
+Os Resource Locks, ou bloqueios de recursos, são mecanismos utilizados para impedir alterações ou exclusões acidentais de recursos importantes.
+
+Existem dois tipos principais:
+
+# ReadOnly
+
+Impede alterações no recurso.
+
+O recurso pode ser visualizado, mas determinadas operações de alteração ficam bloqueadas.
+
+# 🔒 Delete
+
+Permite alterações no recurso, mas impede sua exclusão.
+
+Exemplo:
+
+text
+Banco de Dados de Produção
+        ↓
+Bloqueio: Delete
+        ↓
+Usuários podem alterar configurações permitidas
+        ↓
+Recurso não pode ser excluído acidentalmente
+
+
+Os bloqueios são especialmente importantes para recursos críticos de produção.
+
+
+
+# 7. Tags no Azure
+
+As Tags, ou marcas, são utilizadas para adicionar informações aos recursos do Azure.
+
+Elas funcionam como metadados que ajudam na organização, identificação e gerenciamento dos recursos.
+
+Exemplo:
+
+text
+Ambiente = Producao
+Departamento = TI
+Projeto = ERP
+Responsavel = Infraestrutura
+CentroCusto = TI001
+```
+
+### Tags e governança
+
+As Tags podem ser utilizadas juntamente com Azure Policy para estabelecer padrões.
+
+Por exemplo:
+
+text
+Política:
+Todos os recursos devem possuir a Tag "Ambiente".
+
+
+Dessa forma, a organização consegue estabelecer um padrão de identificação para seus recursos.
+
+## Tags e custos
+
+As Tags também podem auxiliar no gerenciamento financeiro.
+
+Exemplo:
+
+```text
+Projeto = SistemaFinanceiro
+Departamento = Financeiro
+Ambiente = Producao
+CentroCusto = FIN001
+```
+
+Isso facilita a análise dos custos por projeto, departamento ou ambiente.
+
+---
+
+# 8. Portal de Confiança do Serviço
+
+O Service Trust Portal, conhecido em português como Portal de Confiança do Serviço, é uma plataforma da Microsoft que fornece informações relacionadas a segurança, privacidade, conformidade e auditorias dos serviços da Microsoft.
+
+Ele é especialmente importante para organizações que precisam avaliar se os serviços utilizados atendem a requisitos de segurança e conformidade.
+
+Entre os conteúdos disponibilizados podem estar informações relacionadas a:
+
+* Segurança;
+* Privacidade;
+* Compliance;
+* Certificações;
+* Auditorias;
+* Relatórios;
+* Documentação de conformidade.
+
+## Importância para empresas
+
+Antes de adotar determinado serviço de nuvem, uma organização pode precisar verificar se ele atende aos requisitos de:
+
+```text
+Segurança
+     +
+Privacidade
+     +
+Conformidade
+     +
+Regulamentação
+```
+
+O Service Trust Portal auxilia nesse processo fornecendo documentação e informações sobre os controles e compromissos da Microsoft.
+
+---
+
+# 9. Microsoft Purview
+
+O Microsoft Purview é uma plataforma voltada para governança, gerenciamento e proteção de dados, ajudando as organizações a compreender e controlar seus dados.
+
+Ele pode auxiliar em atividades relacionadas a:
+
+ Descoberta de dados;
+ Classificação;
+ Governança de dados;
+ Proteção de informações;
+ Conformidade;
+ Gerenciamento do ciclo de vida dos dados;
+ Identificação de informações sensíveis.
+
+# Exemplo
+
+Uma organização possui:
+
+```text
+Banco de dados
+Documentos
+E-mails
+Arquivos
+Informações financeiras
+Dados pessoais
+```
+
+O Microsoft Purview pode ajudar a organização a entender onde os dados estão, que tipo de informação eles contêm e como devem ser tratados.
+
+---
+
+# 10. Purview e Proteção de Dados
+
+Em ambientes corporativos, não basta saber onde os dados estão.
+
+Também é necessário compreender:
+
+```text
+Que dados existem?
+        ↓
+Onde estão armazenados?
+        ↓
+Quem possui acesso?
+        ↓
+Quais dados são sensíveis?
+        ↓
+Como esses dados devem ser protegidos?
+```
+
+O Microsoft Purview ajuda a organização a obter maior visibilidade sobre seus dados e implementar práticas de governança e conformidade.
+
+---
+
+# 11. Governança na Prática
+
+Uma organização pode combinar diferentes recursos do Azure para construir uma estratégia de governança.
+
+Exemplo:
+
+```text
+                 GOVERNANÇA
+                     │
+       ┌─────────────┼─────────────┐
+       │             │             │
+ Azure Policy     Tags      Resource Locks
+       │             │             │
+       ↓             ↓             ↓
+    Regras       Organização    Proteção
+       │             │             │
+       └─────────────┼─────────────┘
+                     ↓
+             Ambiente Azure
+                     ↓
+              Conformidade
+```
+
+Cada ferramenta possui uma função específica:
+
+| Recurso              | Objetivo                                                        |
+| -------------------- | --------------------------------------------------------------- |
+| Azure Policy         | Criar e aplicar regras                                          |
+| Initiatives          | Agrupar políticas                                               |
+| Resource Locks       | Evitar alterações/exclusões indesejadas                         |
+| Tags                 | Organizar e identificar recursos                                |
+| Service Trust Portal | Consultar informações de segurança e conformidade da Microsoft  |
+| Microsoft Purview    | Governança e proteção de dados                                  |
+| Blueprints           | Padronização de ambientes, conceito em processo de substituição |
+
+---
+
+# 12. Benefícios da Governança no Azure
+
+Uma estratégia adequada de governança pode proporcionar:
+
+### ✅ Maior segurança
+
+Reduz a possibilidade de configurações inadequadas.
+
+### ✅ Padronização
+
+Permite que os ambientes sigam regras e padrões definidos.
+
+### ✅ Controle
+
+Facilita o gerenciamento de recursos e acessos.
+
+### ✅ Conformidade
+
+Ajuda a organização a atender requisitos internos e regulatórios.
+
+### ✅ Organização
+
+Tags e políticas facilitam a identificação e administração dos recursos.
+
+### ✅ Redução de riscos
+
+Bloqueios e políticas podem evitar alterações ou exclusões acidentais.
+
+### ✅ Melhor gerenciamento
+
+A empresa consegue ter maior visibilidade sobre seus recursos e dados.
+
+---
+
+# Conclusão
+
+O estudo de Governança e Conformidade no Microsoft Azure mostrou que administrar uma infraestrutura em nuvem vai muito além de simplesmente criar recursos.
+
+É necessário estabelecer regras, padrões, controles de acesso, mecanismos de proteção e processos para garantir que o ambiente permaneça seguro, organizado e em conformidade com os requisitos da organização.
+
+Entre os principais recursos estudados estão o Azure Policy, Resource Locks, Tags, Microsoft Purview e o Service Trust Portal.
+
+Também compreendi o conceito do Azure Blueprints como uma abordagem de padronização de ambientes, além da evolução da governança do Azure para ferramentas e mecanismos mais atuais.
+
+A combinação desses recursos permite construir uma estratégia de governança capaz de equilibrar segurança, conformidade, organização, controle e flexibilidade.
+
+---
+
+## Principais conceitos estudados
+
+```text
+ Governança no Azure
+ Conformidade
+ Azure Policy
+ Initiatives
+ Azure Blueprints
+ Resource Locks
+ Tags
+ Segurança
+ Compliance
+ Microsoft Purview
+ Service Trust Portal
+ Governança de ambientes
+```
+
+---
+
+## Próximos estudos
+
+Após estudar governança e conformidade, alguns conceitos importantes para aprofundar são:
+
+ Microsoft Entra ID;
+ RBAC (Role-Based Access Control);
+ Azure Policy;
+ Azure Resource Manager;
+ Microsoft Defender for Cloud;
+ Microsoft Purview;
+ Azure Monitor;
+ Azure Arc;
+ Zero Trust;
+ Microsoft Service Trust Portal;
+ FinOps;
+ Segurança e conformidade na nuvem.
+
+---
+
+##  Conhecimento adquirido
+
+Este estudo ampliou minha compreensão sobre como governança, segurança, conformidade e gerenciamento de recursos estão relacionados dentro do ecossistema Microsoft Azure.
+
+A utilização adequada dessas ferramentas é fundamental para construir ambientes de nuvem mais seguros, organizados, controlados e alinhados às necessidades do negócio.
+
